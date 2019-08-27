@@ -17,6 +17,7 @@ const router = express.Router()
 // GET /trips
 router.get('/trips', requireToken, (req, res, next) => {
   Trip.find()
+    .populate('destinations')
     .then(trips => {
       return trips.map(trip => trip.toObject())
     })
