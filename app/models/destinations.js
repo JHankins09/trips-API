@@ -9,16 +9,13 @@ const destinationSchema = new mongoose.Schema({
     type: String
   },
   pit: {
-    type: String,
-    required: true
+    type: String
   },
   peak: {
-    type: String,
-    required: true
+    type: String
   },
   rating: {
     type: Number,
-    required: true,
     max: 5,
     min: 0
   },
