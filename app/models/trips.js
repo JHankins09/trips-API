@@ -6,21 +6,9 @@ const tripSchema = new mongoose.Schema({
     required: true
   },
   destinations: [{
-    type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
     ref: 'Destination'
   }],
-  _duration: {
-    type: Number,
-    required: true
-  },
-  start_destination: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Destination'
-  },
-  end_destination: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Destination'
-  },
   completed: {
     type: Boolean,
     required: true

@@ -17,6 +17,7 @@ const router = express.Router()
 // GET /trips
 router.get('/trips', requireToken, (req, res, next) => {
   Trip.find()
+    .populate('destinations')
     .then(trips => {
       return trips.map(trip => trip.toObject())
     })
@@ -28,6 +29,7 @@ router.get('/trips', requireToken, (req, res, next) => {
 // GET /trips/5a7db6c74d55bc51bdf39793
 router.get('/trips/:id', requireToken, (req, res, next) => {
   Trip.findById(req.params.id)
+    .populate('destinations')
     .then(handle404)
     .then(trip => res.status(200).json({ trip: trip.toObject() }))
     .catch(next)

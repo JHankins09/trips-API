@@ -40,7 +40,6 @@ router.get('/destinations/:id', requireToken, (req, res, next) => {
 router.post('/destinations', requireToken, (req, res, next) => {
   // set owner of new destination to be current user
   req.body.destination.owner = req.user.id
-  console.log(req.body)
 
   Destination.create(req.body.destination)
     .then(destination => {
@@ -53,7 +52,6 @@ router.post('/destinations', requireToken, (req, res, next) => {
 // PATCH /destinations/5a7db6c74d55bc51bdf39793
 router.patch('/destinations/:id', requireToken, removeBlanks, (req, res, next) => {
   delete req.body.destination.owner
-  console.log('Destinations Update Request', req.body)
 
   Destination.findById(req.params.id)
     .then(handle404)
