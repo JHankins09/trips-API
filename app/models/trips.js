@@ -6,7 +6,7 @@ const tripSchema = new mongoose.Schema({
     required: true
   },
   destinations: [{
-    type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
     ref: 'Destination'
   }],
   completed: {
