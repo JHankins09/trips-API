@@ -1,201 +1,160 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+# Trips
 
-# express-api-template
+##### This repo is built as a two part application:
 
-A template for starting projects with `express` as an API. Includes
-authentication and common middlewares.
+- Client (Front-End): https://github.com/JHankins09/trips-client
+- API (Back-End): https://github.com/JHankins09/trips-API
 
-## Installation
 
-1.  [Download](../../archive/master.zip) this template.
-1.  Move the .zip file to your `wdi/projects/` directory and Unzip it (creating a folder) -- **NOTE:** if the folder was already unzipped, use the `mv` command line to move it to the `wdi/projects/` directory.
-1.  Rename the directory from express-api-template -> your-app-name.
-1.  Empty [`README.md`](README.md) and fill with your own content.
-1.  Move into the new project and `git init`.
-1.  Replace all instances of `'express-api-template'` with your app name.
-1.  Install dependencies with `npm install`.
-1.  Ensure that you have `nodemon` installed by running `npm install -g nodemon`.
-1.  Ensure the API is functioning properly by running `npm run server`.
-1.  Once everything is working, make an initial commit.
-1.  Follow the steps in [express-api-deployment-guide](https://git.generalassemb.ly/ga-wdi-boston/express-api-deployment-guide)
+## Getting Started
 
-## Structure
+### Client Install, Setup, and Contributing
+1. Fork and clone [this](https://github.com/JHankins09/trips-client) repository.
+1. To contribute, be sure to checkout to a new branch for your work.
+  - Can be done in command line with ```git checkout -b <your-branch-name-here>```
+1. Install dependencies by running the following in your command line: ```npm install```.
+  - All required NPM packages are present in package.json
+2. To launch the app in a local browser, additionally run the command ```npm start``` in the command line.
 
-Dependencies are stored in [`package.json`](package.json).
+###### NOTE: You need to be running the trips API locally to interact with the local client.
 
-The most important file for understanding the structure of the template is
-`server.js`. This is where the actual Express `app` object is created, where
-the middlewares and routes are registered, and more. To register a routefile,
-follow the pattern established here with `exampleRoutes` and `userRoutes`. If
-you want to add any middlewares to your app, do that here.
+### API Install and setup
+1. Fork and clone [this](https://github.com/JHankins09/trips-API) repository.
+1. To contribute, be sure to checkout to a new branch for your work.
+  - Can be done in command line with ```git checkout -b <your-branch-name-here>```
+1. Install dependencies by running the following in your command line: ```npm install```.
+   - All required NPM packages are present in package.json
+2. To launch the api (required to run local browser Client) run the command ```npm run server``` in the command line
 
-The `app` directory contains models and route files. Models are simply Mongoose
-models. To create your own, follow the patterns established in
-`app/models/example.js`. Route files are somewhat similar to controllers in
-Rails, but they cover more functionality, including serialization and deciding
-which HTTP verbs to accept and what to do with them.
+---
 
-The `config` directory holds just `db.js`, which is where you specify the name
-and URL of your database.
+### Overview
+This app is meant to provide a space to plan, build, and review different types of trips for those with an adventurous spirit! Natively built to accomidate RoadTrips, Camping, Hiking, or Biking, the app allows for flexible addition of locations, as well as a 'peaks and pits' feature to review the pros and cons of visited destinations.
 
-The `lib` directory is for code that will be used in other places in the
-application. The token authentication code is stored in `lib/auth.js`. The
-other files in `lib` deal with error handling. `custom_errors.js` is where all
-the different custom classes of errors are created. If you need some other kind
-of error message, you can add it here. There are also some functions defined
-here that are used elsewhere to check for errors. `lib/error_handler.js` is a
-function that will be used in all your `.catch`es. It catches errors, and sets
-the response status code based on what type of error got thrown.
+### Planning
 
-You probably will only need to interact with files in `app/models`,
-`app/routes`, and `server.js`. You'll need to edit `db/config.js` just once,
-to change the name of your app.
+#### Initial Stories
++ As a visitor, I want to be able to create an account and become a user.
++ As a user, I want to be able to log in, log out, and change my password.
++ As a visitor, I want to be able to see published trips.
++ As a user, I want to be able to create or delete trips.
++ As a user, I want to be able to add, remove or edit destinations to my trips.
++ As a user, I want to be able to distinguish completed vs planned trips.
++ As a user, I want to decide whether my trips will be made public or kept private.
 
-## Tasks
+#### Stretch Stories
++ As a user, I want to see my trip plotted on a map.
++ As a user, I want to search public trips by destination.
++ As a user, I want to be able to select my transportation method on my trip.
++ As a user, I want to be able to rate my and public trips.
 
-Instead of `grunt`, this template uses `npm` as a task runner. This is more
-conventional for modern Express apps, and it's handy because we'll definitely
-use `npm` anyway. These are the commands available:
+#### SUPER Stretch Stories
++ As a user, I want to be able to rate destinations individually.
++ As a user, I want to be able to search destinations by rating before I add them to my trip.
++ As a user, I want to be able to read other users pit’s and peaks of a destination before I add it to my trip.
 
-| Command                | Effect                                                                                                      |
-|------------------------|-------------------------------------------------------------------------------------------------------------|
-| `npm run server`       | Starts a development server with `nodemon` that automatically refreshes when you change something.                                                                                         |
-| `npm test`             | Runs automated tests.                                                                                       |
-| `npm run debug-server` | Starts the server in debug mode, which will print lots of extra info about what's happening inside the app. |
+---
 
-## API
+#### Initial Wire framing
 
-Use this as the basis for your own API documentation. Add a new third-level
-heading for your custom entities, and follow the pattern provided for the
-built-in user authentication documentation.
+##### ERD
+![image](https://media.git.generalassemb.ly/user/21061/files/6c9cc980-c7ea-11e9-921d-229c82b0ca30)
 
-Scripts are included in [`curl-scripts`](curl-scripts) to test built-in actions.
-Add your own scripts to test your custom API.
+#### WireFrame
+![image](https://media.git.generalassemb.ly/user/21061/files/7cb4a900-c7ea-11e9-934d-c832900597ef)
 
-### Authentication
+#### Application Screenshot
 
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/sign-up`             | `users#signup`    |
-| POST   | `/sign-in`             | `users#signin`    |
-| PATCH  | `/change-password/` | `users#changepw`  |
-| DELETE | `/sign-out/`        | `users#signout`   |
+![image](https://media.git.generalassemb.ly/user/21061/files/13e85d80-ca84-11e9-8744-3bfc8b90a85b)
 
-#### POST /sign-up
+#### API Route Table
 
-Request:
+Verb         |	URI Pattern
+------------ | -------------
+GET | /trips
+GET | /trips/:id
+POST | /trips
+PATCH | /trips/:id
+DELETE | /trips/:id
+GET | /destinations
+GET | /destinations/:id
+POST | /destinations
+PATCH | /destinations/:id
+DELETE | /destinations/:id
 
-```sh
-curl --include --request POST http://localhost:4741/sign-up \
-  --header "Content-Type: application/json" \
-  --data '{
-    "credentials": {
-      "email": "an@example.email",
-      "password": "an example password",
-      "password_confirmation": "an example password"
-    }
-  }'
-```
+---
 
-```sh
-curl-scripts/sign-up.sh
-```
+#### This project was planned to be built in 3 primary parts:
+  1. Build out API
+  * Build out API to allow for user, trips, destinations
+  * Apply relationships that allow users to create, manipulte or delete trips, as well as destinations. Additional relationships built for trips to maintain destinations as a property.
+  * Allow for users to view only self built trips.
+  2. Development of Client
+  * Include user authentication functionality including sign-up, sign-in, change-password, etc.
+  * Build Trip content for creating and viewing trips - as well as ability to delete
+  * Build out Destination functionality to create Destinations, include them in the selected Trip, and edit or delete them.
+  3. Style client to improve user flow and set base for future functionality implimentation.
 
-Response:
+### Development Process
 
-```md
-HTTP/1.1 201 Created
-Content-Type: application/json; charset=utf-8
+Majority of time was spent working with React to preform API calls. This was extremely difficult. Further exposure to React will go a long way into being able to fully leverage React with it's axios component.
 
-{
-  "user": {
-    "id": 1,
-    "email": "an@example.email"
-  }
-}
-```
+Front end was initially a challenge as React is a new technology, however over the course of development, my understanding and comfort seemed to grow quickly. While my final output is a ways off from my initial intentions, I am happy with the product and am excited to continue to build on it moving forward.
 
-#### POST /sign-in
+### Problem Solving Strategy
 
-Request:
+All components were built to be as transferable as possible. This allowed for solving of one problem to scale out to a number of additional elements within the build.
 
-```sh
-curl --include --request POST http://localhost:4741/sign-in \
-  --header "Content-Type: application/json" \
-  --data '{
-    "credentials": {
-      "email": "an@example.email",
-      "password": "an example password"
-    }
-  }'
-```
+Majority of problems were experience in th Client side, and refrences to the [React.JS](https://reactjs.org/) online documentation was hugely helpful.
 
-```sh
-curl-scripts/sign-in.sh
-```
+---
 
-Response:
+## Unresolved issues / features for future release
 
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
+- Responsive Design
+  * Mobile UI
+  * Tablet UI
 
-{
-  "user": {
-    "id": 1,
-    "email": "an@example.email",
-    "token": "33ad6372f795694b333ec5f329ebeaaa"
-  }
-}
-```
+- Interactive UI
+  * Stronger form usage
+  * Higher sign-up rate upon visit
 
-#### PATCH /change-password/
+- AWS/Image calls to allow for destination specific photo albums.
 
-Request:
+- Public facing catalog for completed trips, with the possibility of chat for users to pose questions and ideas to each-other.
 
-```sh
-curl --include --request PATCH http://localhost:4741/change-password/ \
-  --header "Authorization: Token token=$TOKEN" \
-  --header "Content-Type: application/json" \
-  --data '{
-    "passwords": {
-      "old": "an example password",
-      "new": "super sekrit"
-    }
-  }'
-```
+- Stronger UI with animations and interactive components.
 
-```sh
-TOKEN=33ad6372f795694b333ec5f329ebeaaa curl-scripts/change-password.sh
-```
+- Change alerts to 'push notification' style, ideally to easy the clutter in the bottom of the app.
 
-Response:
+- Fully utilize the 'Tool bar' feature.
 
-```md
-HTTP/1.1 204 No Content
-```
+- SEO enabled
 
-#### DELETE /sign-out/
+## Built With (technologies used)
 
-Request:
+### Front End Client
+- JavaScript
+- React.JS
+- JSX
+- JSON
+- Axios
+- CSS
+- HTML
 
-```sh
-curl --include --request DELETE http://localhost:4741/sign-out/ \
-  --header "Authorization: Token token=$TOKEN"
-```
+### Back End API
+- JavaScript
+- Mongo.DB
+- Express.API
 
-```sh
-TOKEN=33ad6372f795694b333ec5f329ebeaaa curl-scripts/sign-out.sh
-```
+## Versioning
+V.1 -> released 6/29/19
 
-Response:
+## Author
+### [James B. Hankins](https://jhankins09.github.io/)
 
-```md
-HTTP/1.1 204 No Content
-```
+LinkedIn:   https://www.linkedin.com/in/james-hankins/
+GitHub:     https://github.com/JHankins09
 
-## [License](LICENSE)
-
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+## Acknowledgments
+This project is built as the result of participating in General Assembly Boston's Software Engineering Immersive course.
